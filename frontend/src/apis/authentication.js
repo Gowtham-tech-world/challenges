@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Define the base URL of your Rails API
-const API_URL = 'http://127.0.0.1:3000'; // Replace with your correct URL
+const API_URL = 'http://127.0.0.1:3000'; 
 
 // Function to register a new user
 export const registerUser = async ({ email, password }) => {
@@ -16,7 +16,7 @@ export const registerUser = async ({ email, password }) => {
         'Content-Type': 'application/json', // Ensure the correct content type is set
       }
     });
-    return response.data; // You can adjust this based on your Rails API response
+    return response.data; 
   } catch (error) {
     console.error("Registration Error:", error.response || error);
     throw new Error(error.response?.data?.message || "Registration failed.");

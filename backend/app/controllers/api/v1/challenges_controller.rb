@@ -18,6 +18,7 @@ module Api
   
         # POST /api/v1/challenges
         def create
+          #for debugging purpose
           puts"==========="
           puts current_user.id
           puts current_user.email
