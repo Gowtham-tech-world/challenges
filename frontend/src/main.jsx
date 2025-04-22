@@ -4,7 +4,8 @@ import './index.css';
 import App from './App.jsx';
 import Authentication, { PageType } from './pages/Authentication.jsx';
 import ChallengesList from './pages/ChallengesList.jsx';
-import CreateChallenge from './components/CreateChallenge.jsx';
+import CreateChallenge from './pages/CreateChallenge.jsx';
+import UpdateChallenge from './pages/UpdateChallenge.jsx';
 
 import {
   createBrowserRouter,
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: '/create-challenge',
     element: <CreateChallenge />, // Route to create a new challenge
+  },
+  {
+    path: '/update-challenge/:id',
+    element: <UpdateChallenge />,
   },
 ]);
 
