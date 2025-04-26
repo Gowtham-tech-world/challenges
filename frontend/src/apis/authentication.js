@@ -16,7 +16,7 @@ export const registerUser = async ({ email, password }) => {
         'Content-Type': 'application/json', // Ensure the correct content type is set
       }
     });
-    return response.data; 
+    return response.data; // You can adjust this based on your Rails API response
   } catch (error) {
     console.error("Registration Error:", error.response || error);
     throw new Error(error.response?.data?.message || "Registration failed.");

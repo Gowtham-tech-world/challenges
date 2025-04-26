@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - myapp-network
+
+  backend:
+    build: ./backend
+    environment:
+      RAILS_ENV: production
+      DATABASE_URL: postgres://postgres:12345@db:5432/mydb
+      RAILS_MASTER_KEY: "642653e8f7f1c0a722c933b4b11c4947"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/rails
+    networks:
+      - myapp-network
+
+  db:
+    image: postgres:17.4
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - myapp-network
+
+volumes:
+  postgres_data:
+
+networks:
+  myapp-network:
+    driver: bridge

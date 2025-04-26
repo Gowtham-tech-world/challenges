@@ -19,10 +19,11 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://localhost:5173' # The URL of your React frontend
+    origins 'http://localhost:5174'  # 👈 your frontend URL
 
     resource '*',
-             headers: :any,
-             methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      credentials: true
   end
 end
